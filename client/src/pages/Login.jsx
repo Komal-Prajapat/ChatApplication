@@ -3,7 +3,10 @@ import React from 'react'
 const Login = () => {
   return (
     <div>
-      Login
+     <form>
+      <label > User name</label>
+    <input type="text" placeholder='' />
+     </form>
     </div>
   )
 }
