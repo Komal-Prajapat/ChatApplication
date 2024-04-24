@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 const [values, setvalues] = useState({
-  username: "",
+  name: "",
   email : "",
   password : "",
   confirmPassword : ""
@@ -22,30 +22,44 @@ const [values, setvalues] = useState({
   };
 
   const handleValidation = () => {
-    const { password, confirmPassword, username, email } = values;
+    const { password, confirmPassword, name, email } = values;
     if (password !== confirmPassword) {
       toast.error("Password and confirm password should be the same", {
         position: "bottom-right",
-        autoClose: 3000, // Increase the time for the toast message to be visible
+        autoClose: 3000,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark"
+      });
+    } else if (name.length < 2) {
+      toast.error("name should be greater than 2 characters", {
+        position: "bottom-right",
+        autoClose: 3000,
         pauseOnHover: true,
         draggable: true,
         theme: "dark"
       });
     }
-    else{
-     
-        toast("Welcome"), {
-          position: "bottom-right",
-          autoClose: 3000, // Increase the time for the toast message to be visible
-          pauseOnHover: true,
-          draggable: true,
-          theme: "dark"
-        };
-      }
-    
+    else if (password.length < 3 ) {
+      toast.error("password value greater then 3 ", {
+        position: "bottom-right",
+        autoClose: 3000,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark"
+      });
+    }  
+    else {
+      toast.success("Welcome", {
+        position: "bottom-right",
+        autoClose: 3000,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark"
+      });
+    }
   };
   
-
   const handleChange=(event)=>{
       setvalues({...values,[event.target.name]:event.target.value})
   }
@@ -64,7 +78,7 @@ const [values, setvalues] = useState({
         <div className="input-container">
           <input
             type="text"
-            placeholder="Username"
+            placeholder="name"
             name="name"
             onChange={(e) => handleChange(e)}
           />
