@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './register.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-  
+  import axios from 'axios'
 
 const Register = () => {
 const [values, setvalues] = useState({
@@ -16,9 +16,12 @@ const [values, setvalues] = useState({
   const handlSubmit = (event) => {
     event.preventDefault();
     // alert("form");
-    handleValidation();
+    if(handleValidation()){
+      const{password,confirmPassword,name,email}=values;
+      const {data} = await axios.post()
+    };
     // console.log("Register")
-
+  
   };
 
   const handleValidation = () => {
@@ -31,6 +34,7 @@ const [values, setvalues] = useState({
         draggable: true,
         theme: "dark"
       });
+   return false
     } else if (name.length < 2) {
       toast.error("name should be greater than 2 characters", {
         position: "bottom-right",
@@ -39,6 +43,7 @@ const [values, setvalues] = useState({
         draggable: true,
         theme: "dark"
       });
+      return false
     }
     else if (password.length < 3 ) {
       toast.error("password value greater then 3 ", {
@@ -48,6 +53,7 @@ const [values, setvalues] = useState({
         draggable: true,
         theme: "dark"
       });
+      return false
     }  
     else {
       toast.success("Welcome", {
@@ -57,6 +63,7 @@ const [values, setvalues] = useState({
         draggable: true,
         theme: "dark"
       });
+      return false
     }
   };
   
