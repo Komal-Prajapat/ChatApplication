@@ -21,7 +21,7 @@ const [values, setvalues] = useState({
       const {data} = await axios.post()
     };
     // console.log("Register")
-  
+   
   };
 
   const handleValidation = () => {
